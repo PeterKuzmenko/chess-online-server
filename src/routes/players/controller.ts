@@ -81,8 +81,6 @@ class PlayersController {
 
         if (fs.existsSync(avatarPath)) {
           fs.unlinkSync(avatarPath);
-        } else {
-          return res.status(404).json({ error: 'Avatar not found' });
         }
 
         player.avatarUrl = undefined;
