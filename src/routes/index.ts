@@ -17,8 +17,6 @@ router.use('/rooms', [authMiddleware], roomsRouter);
 router.use('/players', [authMiddleware], playersRouter);
 router.use('/auth', authRouter);
 
-// router.get('/', (req, res) => res.redirect('/app'));
-
 router.use(express.static(publicDirectory));
 router.get('*', (req, res) => {
   res.sendFile(path.join(publicDirectory, 'index.html'));
