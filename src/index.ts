@@ -1,19 +1,17 @@
-import { staticDirectory } from './storage';
-
 declare module 'socket.io' {
   interface Socket {
     userId?: string;
   }
 }
 
+import cors from 'cors';
 import express, { Express } from 'express';
 import * as mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import { Server, Socket } from 'socket.io';
-import router from './routes';
-import cors from 'cors';
 
+import router from './routes';
 import { setListeners } from './listeners';
 import { secret } from './config';
 
@@ -39,7 +37,6 @@ const io = new Server(server, {
 app.use(express.json());
 app.use(cors());
 app.use('/', router);
-app.use('/static', express.static(staticDirectory));
 
 const startServer = async () => {
   try {

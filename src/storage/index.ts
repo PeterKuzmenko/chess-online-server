@@ -1,9 +1,6 @@
 // Define the storage for uploaded files
 import multer from 'multer';
-import path from 'path';
-
-export const rootDirectory = path.dirname(__dirname);
-export const staticDirectory = path.join(rootDirectory, 'static');
+import { staticDirectory } from '../paths';
 
 const storage = multer.diskStorage({
   destination: staticDirectory, // Specify the directory to store the uploaded files

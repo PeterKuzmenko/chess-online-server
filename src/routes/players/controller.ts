@@ -4,7 +4,7 @@ import * as fs from 'fs';
 
 import { Player } from './model';
 import { ChangeUsernamePayload, GetPlayersParams, UpdateUserInfoPayload } from './types';
-import { rootDirectory } from '../../storage';
+import { rootDirectory } from '../../paths';
 import { User } from '../auth/model';
 
 class PlayersController {
