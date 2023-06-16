@@ -11,17 +11,17 @@ import { publicDirectory, staticDirectory } from '../paths';
 
 const router = Router();
 
-router.get('/', (req, res) => res.redirect('/app'));
-
-router.use(express.static(publicDirectory));
-router.get('/app*', (req, res) => {
-  res.sendFile(path.join(publicDirectory, 'index.html'));
-});
-
 router.use('/static', express.static(staticDirectory));
 
 router.use('/rooms', [authMiddleware], roomsRouter);
 router.use('/players', [authMiddleware], playersRouter);
 router.use('/auth', authRouter);
+
+// router.get('/', (req, res) => res.redirect('/app'));
+
+router.use(express.static(publicDirectory));
+router.get('*', (req, res) => {
+  res.sendFile(path.join(publicDirectory, 'index.html'));
+});
 
 export default router;
