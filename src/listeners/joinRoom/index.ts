@@ -59,7 +59,7 @@ export const onJoinRoom = (
       Object.keys(room.players).forEach(x => {
         room.players[x].color = x === currentPlayerId ? Colors.White : Colors.Black;
       });
-    } else {
+    } else if (room.gameData?.gameStarted) {
       updateTimers(room.gameData!);
     }
 
